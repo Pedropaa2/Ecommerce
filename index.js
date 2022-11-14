@@ -77,6 +77,7 @@ divtotalPrice.appendChild(totalTexto)
 let totalNumero = document.createElement("p")
 divtotalPrice.appendChild(totalNumero)
 
+let divEmpty = document.querySelector(".empty")
 
 for (x = 0; x < listaCachorros.length; x = x + 3) {
     let div = document.createElement("div")
@@ -313,7 +314,10 @@ for (i = 0; i < adicionar.length; i++) {
         quantidadeTexto.innerText = "Quantidade"
         totalTexto.innerText = "Total"
         quantidadeTotal.innerText = `${cont}`
-        totalNumero.innerText = `${soma}`
+        totalNumero.innerText = `R$ ${soma}`
+
+
+        divEmpty.classList.add("withItems")
 
     })
 }
@@ -347,6 +351,7 @@ function identificaCachorro(id) {
             divFavorito.appendChild(nomefavorito)
 
             let pricefavorito = document.createElement("p")
+            pricefavorito.classList.add("price")
             pricefavorito.innerText = "R$ " + listaCachorros[z].price
             divFavorito.appendChild(pricefavorito)
 
@@ -361,7 +366,11 @@ function identificaCachorro(id) {
                 cont = cont - 1
                 quantidadeTotal.innerText = `${cont}`
                 Soma(removefavorito.id)
-                totalNumero.innerText = `${soma}`
+                totalNumero.innerText = `R$ ${soma}`
+                if(soma == 0){
+                    esconder.classList.add("escondido")
+                    divEmpty.classList.remove("withItems")
+                }
 
             })
 
@@ -376,6 +385,7 @@ function Soma(x) {
     for (p = 0; p < listaCachorros.length; p++) {
         if (listaCachorros[p].id == x) {
             soma = soma - listaCachorros[p].price
+
         }
     }
     return soma
