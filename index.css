@@ -156,11 +156,14 @@ nav {
    display: flex;
    align-items: center;
  }
- 
  .nav {
      margin-right: 50px;
  }
-
+.nav:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #37268C;
+}
 main {
     margin-top: 50px;
     display: flex;
